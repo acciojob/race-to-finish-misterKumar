@@ -1,14 +1,59 @@
-const promises = Array.from({ length: 5 }, () =>
-  new Promise((resolve) => {
-    const randomTime = Math.floor(Math.random() * 5000) + 1000; // Random time between 1 and 5 seconds
-    setTimeout(() => resolve(`Resolved in ${randomTime / 1000} seconds`), randomTime);
-  })
-);
 
-Promise.any(promises)
-  .then((result) => {
-    document.getElementById("output").textContent = result;
-  })
-  .catch((error) => {
-    console.error("All promises failed:", error);
-  });
+
+
+// Do not change the code above this
+// add your promises to the array `promises`
+
+let p1=new Promise((resolve,reject)=>{
+
+    
+    let random_time=getRandomTime(1000,5000);
+    setTimeout(() => {
+        resolve("Im in promise1")
+    }, random_time);
+})
+
+let p2=new Promise((resolve,reject)=>{
+
+    
+    let random_time=getRandomTime(1000,5000);
+    setTimeout(() => {
+        resolve("Im in promise2")
+    }, random_time);
+})
+
+let p3=new Promise((resolve,reject)=>{
+
+    
+    let random_time=getRandomTime(1000,5000);
+    setTimeout(() => {
+        resolve("Im in promise3")
+    }, random_time);
+})
+
+let p4=new Promise((resolve,reject)=>{
+
+    
+    let random_time=getRandomTime(1000,5000);
+    setTimeout(() => {
+        resolve("Im in promise4")
+    }, random_time);
+})
+
+let p5=new Promise((resolve,reject)=>{
+
+    
+    let random_time=getRandomTime(1000,5000);
+    setTimeout(() => {
+        resolve("Im in promise5")
+    }, random_time);
+})
+
+function getRandomTime(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+
+//   const promises = [];
+window.promises=[p1,p2,p3,p4,p5]; 
+let output_div=document.getElementById("output");
+Promise.any(promises).then((value)=>output_div.innerHTML=value);
